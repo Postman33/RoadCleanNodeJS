@@ -7,10 +7,13 @@ class Point {
         return `lat=${this.lat}&lon=${this.long}`
     }
    get length(){
-        return Math.sqrt( this.lat^2 + this.long^2)
+        return Math.sqrt( this.lat*this.lat + this.long*this.long)
    }
     static Distance(P1, P2){
-        return (new Point(P2.lat-P1.lat,P2.long-P1.long)).length
+        return (new Point(10000*(P2.lat-P1.lat),10000*(P2.long-P1.long))).length
+    }
+    get mapBoxFormat(){
+        return [this.lat,this.long]
     }
 }
 module.exports = Point;
